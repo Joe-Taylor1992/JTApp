@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+        {% block content %}
+            <p><a href={{ url_for('user.register') }}>Register</a></p>
+            <p><a href={{ url_for('user.login') }}>Sign in</a></p>
+            <p><a href={{ url_for('user.change_password') }}>Change Password</a></p>
+            <p><a href={{ url_for('index') }}>Tickets</a></p>
+            <p><a href={{ url_for('userindex') }}>Users</a></p>
+            <p><a href={{ url_for('user.logout') }}>Sign out</a></p>
+            <h3 class='text-center mb-3'>Open Tickets</h3>
+            <p class='text-right'><a href='{{url_for("add_ticket")}}' class='btn btn-success '>+Create Ticket</a></p>
+            <table class='table table-bordered'>
+                <thead>
+                <th>Ticket Number</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Priority</th>
+                <th>Description</th>               
+                <th>Edit</th>
+                <th>Delete</th>
+                </thead>
+                <tbody>
+                {% for row in datas %}
+                    <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{row.UNAME}}</td>
+                    <td>{{row.CONTACT}}</td>
+                    <td>{{row.PRIORITY}}</td>
+                    <td>{{row.DESCRIPTION}}</td>
+                    <td><a href='{{url_for("edit_ticket",ticket_id=row.TICKET_ID)}}' class='btn btn-primary'>Edit</a></td>
+                    <td><a href='{{url_for("delete_ticket",ticket_id=row.TICKET_ID)}}' class='btn btn-danger' onclick='return confirm("Are You Sure")'>Delete</a></td>
+                    </tr>
+                {%endfor%}
+                </tbody>
+            </table>
+            {% endblock %}

@@ -1,0 +1,16 @@
+{% extends "CRUD_layout.html" %}    
+{% block body %}
+  <div class='row'>
+    <div class='col-5 mx-auto'>
+      <h3>Edit Role</h3><hr>
+      <form method='post' action='{{url_for("edit_role",user_id=datas.USER_ID)}}'>
+        <div class='form-group'>
+          <label>Role ID</label><hr>
+          <label>Input 1 for "Agent" Role. Input 2 for "Admin" Role.</label>
+          <input type='value' name='role_id' required class='form-control' value='{{datas.role_id}}'>
+        </div>
+        <input type='submit' value='Submit' class='btn btn-primary'>
+      </form>
+    </div>
+  </div>
+{% endblock %}
